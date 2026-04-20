@@ -1,5 +1,13 @@
 const Parser = require("rss-parser");
-const parser = new Parser();
+const parser = new Parser({
+  headers: {
+    Cookie: {
+      token_v2:
+        // Reddit might hate you and IP ban you if you make too many requests without a token
+        "TOKEN",
+    },
+  },
+});
 
 const SUBREDDIT = "news"; // Change this to your subreddit name
 const NTFY_TOPIC = "topic"; // Change this to your ntfy.sh topic
